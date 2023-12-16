@@ -51,8 +51,8 @@ public class OpenAITranslate extends BaseTranslate {
             return cachedResult;
         }
         
-        String model = "text-davinci-003";
-        int max_tokens = 4000;
+        String model = "gpt-4";
+        int max_tokens = 8192;
 //        Below is commented out because of 404 issue.
 //        See https://community.openai.com/t/when-i-try-the-gpt-4-model-chat-completion-in-api-request-i-get-an-error-that-model-does-not-exist/98850
 //        if (text.length() > max_tokens * 0.3) {
@@ -60,7 +60,7 @@ public class OpenAITranslate extends BaseTranslate {
 //        	max_tokens = 8000;
 //        }
 
-        String prompt = String.format("Translate below into %s: %s", lvTargetLang, text);
+        String prompt = String.format("You are a Machine Translation Program that provides industry-standard English translations for Chinese novels. For every Chinese line that is fed to you, provide the English translation", lvTargetLang, text);
         String escapedPrompt = prompt.replaceAll("\"", "\\\\\"").replaceAll("\n", "\\\\n");
         
         Map<String, String> headers = new TreeMap<>();
